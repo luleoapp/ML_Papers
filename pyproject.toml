@@ -1,0 +1,65 @@
+[build-system]
+requires = ["setuptools>=42", "wheel", "pybind11>=2.6.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "backtest_simulator"
+version = "0.1.0"
+description = "Backtest simulator for trading strategies using tick data"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "Your Name", email = "your.email@example.com"}
+]
+dependencies = [
+    "numpy",
+    "pandas",
+    "pyarrow",
+    "pybind11",
+    "pytest",
+    "pytest-cov",
+    "python-dateutil",
+    "pydantic",
+    "typer[all]",
+    "xarray",
+    "dask",
+    "distributed"
+]
+
+[project.optional-dependencies]
+dev = [
+    "black",
+    "isort",
+    "mypy",
+    "flake8",
+    "pre-commit"
+]
+viz = [
+    "matplotlib",
+    "seaborn",
+    "plotly"
+]
+
+[tool.setuptools]
+packages = ["backtest_simulator"]
+
+[tool.black]
+line-length = 100
+target-version = ["py38"]
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_functions = "test_*"
